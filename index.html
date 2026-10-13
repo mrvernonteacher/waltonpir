@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Price is Right - Senior Breakfast</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Press+Start+2P&family=Righteous&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Retro Marquee Bar -->
+  <header class="marquee-header">
+    <div class="logo-area">
+      <!-- Optional School / Event Logo can go here -->
+      <div class="show-title">
+        <span class="the">THE</span>
+        <span class="pir-title">PRICE IS RIGHT</span>
+        <span class="subtitle">★ SENIOR BREAKFAST EDITION ★</span>
+      </div>
+    </div>
+    
+    <div class="sync-controls">
+      <span id="sync-status" class="sync-dot synced" title="Drive Synced"></span>
+      <button id="btn-sync-settings" class="retro-btn sm">⚙ Drive Sync</button>
+      <button id="btn-reset-quad" class="retro-btn sm alert" title="Clears all 4 spots for a brand new group">Fresh 4 (New Half)</button>
+    </div>
+  </header>
+
+  <!-- Navigation Bar for Stage Games -->
+  <nav class="game-nav">
+    <button class="nav-tab active" data-view="contestants-row">Contestants' Row</button>
+    <button class="nav-tab" data-view="secret-x">Secret X</button>
+    <button class="nav-tab" data-view="plinko">Plinko</button>
+    <button class="nav-tab" data-view="cliffhanger">Cliffhangers</button>
+    <button class="nav-tab" data-view="dice-game">Dice Game</button>
+    <button class="nav-tab" data-view="hole-in-one">Hole in One (or 2)</button>
+    <button class="nav-tab" data-view="punch-a-bunch">Punch-a-Bunch</button>
+  </nav>
+
+  <!-- Main Display Screen -->
+  <main class="stage-container">
+    
+    <!-- VIEW 1: CONTESTANTS' ROW -->
+    <section id="contestants-row" class="view-panel active">
+      
+      <!-- Prize & Host Control Board -->
+      <div class="podium-host-console">
+        <div class="item-up-for-bids">
+          <label>ITEM UP FOR BIDS (ROUND <span id="round-indicator">1</span>)</label>
+          <input type="text" id="prize-description" value="Senior Breakfast VIP Parking Spot" placeholder="Prize Name...">
+        </div>
+        
+        <div class="arp-container">
+          <label>ACTUAL RETAIL PRICE</label>
+          <div class="arp-field-wrapper">
+            <span class="currency-symbol">$</span>
+            <input type="number" id="actual-retail-price" placeholder="000">
+            <button id="btn-reveal-arp" class="retro-btn">Reveal ARP</button>
+          </div>
+        </div>
+
+        <div class="bidding-actions">
+          <button id="btn-tabulate" class="retro-btn gold">Tabulate Winner</button>
+          <button id="btn-advance" class="retro-btn green" disabled>Winner to Stage ➔</button>
+        </div>
+      </div>
+
+      <!-- Announcer Result Banner -->
+      <div id="announcement-banner" class="announcement-banner">
+        COME ON DOWN! ENTER BIDS BELOW.
+      </div>
+
+      <!-- Contestants' Row 4 Podium Display -->
+      <div class="row-podiums-viewport">
+        <div class="podiums-container" id="podiums-track">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Roster / On-Deck Drawer -->
+      <div class="on-deck-bar">
+        <span>NEXT IN LINE:</span>
+        <div id="on-deck-list" class="on-deck-chips"></div>
+        <button id="btn-add-student" class="retro-btn sm">+ Add Contestant</button>
+      </div>
+    </section>
+
+    <!-- VIEW 2: GAME PLACEHOLDERS -->
+    <section id="secret-x" class="view-panel game-placeholder">
+      <div class="game-header"><h2>SECRET "X"</h2></div>
+      <div class="placeholder-box"><p>Placeholder: Secret X tic-tac-toe grid & prize cards.</p></div>
+    </section>
+
+    <section id="plinko" class="view-panel game-placeholder">
+      <div class="game-header"><h2>PLINKO</h2></div>
+      <div class="placeholder-box"><p>Placeholder: Plinko Board, chip drop simulator, and scoring slots.</p></div>
+    </section>
+
+    <section id="cliffhanger" class="view-panel game-placeholder">
+      <div class="game-header"><h2>CLIFF HANGERS</h2></div>
+      <div class="placeholder-box"><p>Placeholder: Yodely Guy mountain path step counter & small prizes.</p></div>
+    </section>
+
+    <section id="dice-game" class="view-panel game-placeholder">
+      <div class="game-header"><h2>THE DICE GAME</h2></div>
+      <div class="placeholder-box"><p>Placeholder: Car price rolling dice mechanics (Higher/Lower).</p></div>
+    </section>
+
+    <section id="hole-in-one" class="view-panel game-placeholder">
+      <div class="game-header"><h2>HOLE IN ONE (OR TWO)</h2></div>
+      <div class="placeholder-box"><p>Placeholder: Grocery pricing ranking & putting line visual.</p></div>
+    </section>
+
+    <section id="punch-a-bunch" class="view-panel game-placeholder">
+      <div class="game-header"><h2>PUNCH-A-BUNCH</h2></div>
+      <div class="placeholder-box"><p>Placeholder: 50-hole punchboard grid and cash slips.</p></div>
+    </section>
+
+  </main>
+
+  <!-- Google Script Drive URL Modal -->
+  <dialog id="drive-modal" class="retro-modal">
+    <h3>Google Apps Script Bridge</h3>
+    <p>Paste the deployed Web App URL to persist state to Google Drive:</p>
+    <input type="text" id="gas-url-input" placeholder="https://script.google.com/macros/s/.../exec">
+    <div class="modal-buttons">
+      <button id="btn-save-gas-url" class="retro-btn sm green">Save & Connect</button>
+      <button id="btn-close-modal" class="retro-btn sm">Cancel</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
